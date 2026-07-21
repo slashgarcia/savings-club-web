@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliminar cuenta — Caja de Ahorro</title>
+  <meta name="description" content="Elimina tu cuenta de Caja de Ahorro y tus datos personales, desde la app o desde la web." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F766E'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./index.html"><span class="mark">C</span> Caja de Ahorro</a>
+      <nav class="nav">
+        <a href="./soporte.html">Soporte</a>
+        <a href="./privacidad.html">Privacidad</a>
+        <a href="./terminos.html">Términos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-legal">
+    <div class="wrap">
+      <a class="back" href="./index.html">← Inicio</a>
+      <h1>Eliminar tu cuenta</h1>
+      <p>Puedes eliminar tu cuenta de <strong>Caja de Ahorro</strong> y tus datos personales cuando quieras, desde la app o aquí mismo en la web.</p>
+
+      <h2>Qué pasa al eliminar tu cuenta</h2>
+      <ul>
+        <li>Se borra tu <strong>acceso</strong>: tu correo y tu contraseña se eliminan y ya no podrás iniciar sesión.</li>
+        <li>Se borran tus <strong>datos personales</strong> del perfil: nombre, teléfono y foto.</li>
+        <li>Se eliminan tus <strong>notificaciones</strong> y los grupos («cajas») en los que eras el único participante.</li>
+        <li>Por integridad del grupo, tu participación en cajas compartidas se conserva de forma <strong>anonimizada</strong> (apareces como «Usuario eliminado»), para que el administrador pueda completar la devolución del ahorro que se te adeude y el historial de los demás quede íntegro.</li>
+      </ul>
+
+      <div class="callout--warn callout">
+        <strong>No puedes eliminar tu cuenta si:</strong> administras una caja activa con otros miembros, o tienes devoluciones pendientes por entregar a otros. Primero completa o cancela esas cajas y entrega las devoluciones.
+      </div>
+
+      <h2>Opción A — Desde la app</h2>
+      <p>Abre la app y ve a <strong>Perfil → Eliminar cuenta</strong>. Confirma y listo.</p>
+
+      <h2>Opción B — Desde la web</h2>
+      <p>Verifica tu identidad con un código que enviaremos a tu correo y elimina tu cuenta aquí:</p>
+
+      <div class="card">
+        <!-- Paso 1: correo -->
+        <div class="step active" id="step-email">
+          <div class="field">
+            <label for="email">Tu correo</label>
+            <input type="email" id="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" />
+          </div>
+          <div class="status" id="status-email"></div>
+          <button class="btn btn--block" id="btn-send">Enviar código</button>
+          <p class="muted" style="margin:12px 0 0">Te enviaremos un código de 6 dígitos. Funciona aunque te hayas registrado con Google o Apple.</p>
+        </div>
+
+        <!-- Paso 2: código -->
+        <div class="step" id="step-code">
+          <div class="field">
+            <label for="code">Código de 6 dígitos</label>
+            <input type="text" id="code" class="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" />
+          </div>
+          <div class="status" id="status-code"></div>
+          <button class="btn btn--block" id="btn-verify">Verificar</button>
+          <button class="btn btn--ghost btn--block" id="btn-back-email" style="margin-top:10px">Usar otro correo</button>
+        </div>
+
+        <!-- Paso 3: confirmar borrado -->
+        <div class="step" id="step-confirm">
+          <p>Identidad verificada como <strong id="confirm-email"></strong>.</p>
+          <div class="callout--warn callout" style="margin-top:0">Esta acción es <strong>permanente</strong> y no se puede deshacer.</div>
+          <label class="check">
+            <input type="checkbox" id="ack" />
+            <span>Entiendo que se eliminará mi acceso y mis datos personales de forma permanente.</span>
+          </label>
+          <div class="status" id="status-confirm"></div>
+          <button class="btn btn--danger btn--block" id="btn-delete" disabled>Eliminar mi cuenta permanentemente</button>
+        </div>
+
+        <!-- Paso 4: éxito -->
+        <div class="step" id="step-done">
+          <div class="status status--ok show" style="margin-top:0">
+            <strong>Tu cuenta fue eliminada.</strong> Tu acceso y tus datos personales se borraron. Gracias por usar Caja de Ahorro.
+          </div>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:16px">¿Problemas para eliminar tu cuenta? Escríbenos a <a href="mailto:soporte@cajadeahorro.app">soporte@cajadeahorro.app</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav>
+        <a href="./privacidad.html">Privacidad</a>
+        <a href="./terminos.html">Términos</a>
+        <a href="./soporte.html">Soporte</a>
+        <a href="./eliminar-cuenta.html">Eliminar cuenta</a>
+      </nav>
+      <span>© 2026 Caja de Ahorro</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script>
+    (function () {
+      const cfg = window.SAVINGS_CLUB_CONFIG || {};
+      const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+      let email = '';
+
+      const $ = (id) => document.getElementById(id);
+      const steps = {
+        email: $('step-email'),
+        code: $('step-code'),
+        confirm: $('step-confirm'),
+        done: $('step-done'),
+      };
+
+      function show(step) {
+        Object.values(steps).forEach((el) => el.classList.remove('active'));
+        steps[step].classList.add('active');
+      }
+
+      function setStatus(id, kind, msg) {
+        const el = $(id);
+        el.className = 'status show status--' + kind;
+        el.textContent = msg;
+      }
+      function clearStatus(id) {
+        const el = $(id);
+        el.className = 'status';
+        el.textContent = '';
+      }
+
+      function busy(btn, on, labelBusy) {
+        if (on) {
+          btn.dataset.label = btn.textContent;
+          btn.textContent = labelBusy;
+          btn.disabled = true;
+        } else {
+          btn.textContent = btn.dataset.label || btn.textContent;
+          btn.disabled = false;
+        }
+      }
+
+      // Paso 1 → enviar OTP
+      $('btn-send').addEventListener('click', async () => {
+        clearStatus('status-email');
+        const value = $('email').value.trim().toLowerCase();
+        if (!value || !value.includes('@')) {
+          setStatus('status-email', 'error', 'Escribe un correo válido.');
+          return;
+        }
+        email = value;
+        const btn = $('btn-send');
+        busy(btn, true, 'Enviando…');
+        // shouldCreateUser:false → no creamos cuentas fantasma. No revelamos si el
+        // correo existe (anti-enumeración): avanzamos igual con un mensaje genérico.
+        const { error } = await sb.auth.signInWithOtp({
+          email,
+          options: { shouldCreateUser: false },
+        });
+        busy(btn, false);
+        if (error && (error.status === 429 || /rate/i.test(error.message || ''))) {
+          setStatus('status-email', 'error', 'Demasiados intentos. Espera un momento y vuelve a intentar.');
+          return;
+        }
+        // Cualquier otro caso (incluye correo inexistente): mensaje genérico.
+        show('code');
+        setStatus('status-code', 'info', 'Si ese correo tiene una cuenta, te enviamos un código de 6 dígitos. Revisa tu bandeja y spam.');
+      });
+
+      // Paso 2 → verificar OTP
+      $('btn-verify').addEventListener('click', async () => {
+        clearStatus('status-code');
+        const token = $('code').value.trim();
+        if (!/^\d{6}$/.test(token)) {
+          setStatus('status-code', 'error', 'El código son 6 dígitos.');
+          return;
+        }
+        const btn = $('btn-verify');
+        busy(btn, true, 'Verificando…');
+        const { data, error } = await sb.auth.verifyOtp({ email, token, type: 'email' });
+        busy(btn, false);
+        if (error || !data || !data.session) {
+          setStatus('status-code', 'error', 'Código incorrecto o expirado. Solicita uno nuevo.');
+          return;
+        }
+        $('confirm-email').textContent = email;
+        show('confirm');
+      });
+
+      $('btn-back-email').addEventListener('click', () => {
+        clearStatus('status-code');
+        $('code').value = '';
+        show('email');
+      });
+
+      // Habilitar borrado solo con el checkbox
+      $('ack').addEventListener('change', (e) => {
+        $('btn-delete').disabled = !e.target.checked;
+      });
+
+      // Paso 3 → eliminar
+      $('btn-delete').addEventListener('click', async () => {
+        clearStatus('status-confirm');
+        const btn = $('btn-delete');
+        busy(btn, true, 'Eliminando…');
+        const { error } = await sb.rpc('eliminar_mi_cuenta');
+        if (error) {
+          busy(btn, false);
+          if (error.code === 'PX020') {
+            setStatus('status-confirm', 'error',
+              'Antes de eliminar tu cuenta, completa o cancela las cajas que administras con otros miembros y entrega las devoluciones pendientes.');
+          } else {
+            setStatus('status-confirm', 'error', 'No pudimos eliminar tu cuenta. Intenta de nuevo.');
+          }
+          return;
+        }
+        // El login ya no existe; limpiamos la sesión local.
+        try { await sb.auth.signOut(); } catch (_) {}
+        show('done');
+      });
+    })();
+  </script>
+</body>
+</html>
