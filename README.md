@@ -44,11 +44,18 @@ No hay backend nuevo: reusa el mismo RPC que el borrado dentro de la app.
 
 ## Antes de publicar (pendientes)
 
-- [ ] **Revisión legal humana** de `privacidad.html` y `terminos.html` (son un borrador).
 - [ ] Reemplazar el correo de soporte `soporte@cajadeahorro.app` por el real
       (find/replace en los `.html` y en `config.js` → `SUPPORT_EMAIL`).
 - [ ] Cambiar los badges «Próximamente» de la landing por los links reales de las tiendas.
 - [ ] (Opcional) Agregar capturas de la app en `assets/` y en la landing.
+- [ ] (Recomendado) Revisar `privacidad.html` y `terminos.html` con un abogado si la
+      App comienza a operar comercialmente o manejará un volumen significativo de usuarios.
+
+Los documentos legales ya no son borrador: identifican al responsable (Saúl García),
+incluyen consentimiento, procedimiento ARCO, licencia, propiedad intelectual, legislación
+mexicana y declaran los servicios reales (Supabase, FCM, Google/Apple — sin analytics).
+Al ajustar el Aviso, verifica que **Google Play Data Safety** y las **Privacy Nutrition
+Labels** de App Store coincidan exactamente con lo declarado.
 
 ## Probar local
 
