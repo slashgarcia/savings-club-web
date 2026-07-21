@@ -148,13 +148,17 @@ main { padding: 40px 0 64px; }
 }
 .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
 .badge {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 10px;
+  width: 210px; box-sizing: border-box;
   background: var(--text); color: #fff;
-  padding: 10px 18px; border-radius: 12px;
-  font-size: .9rem; font-weight: 600;
+  padding: 10px 16px; border-radius: 12px;
+  text-align: left;
 }
 .badge:hover { text-decoration: none; opacity: .9; }
-.badge small { display: block; font-weight: 400; opacity: .7; font-size: .7rem; }
+.badge .store-ico { width: 24px; height: 24px; flex: 0 0 auto; fill: #fff; }
+.badge-txt { display: flex; flex-direction: column; line-height: 1.15; }
+.badge-txt small { font-weight: 400; opacity: .7; font-size: .68rem; }
+.badge-txt b { font-weight: 700; font-size: .98rem; }
 
 .features {
   display: grid;

@@ -5,6 +5,6 @@
 window.SAVINGS_CLUB_CONFIG = {
   SUPABASE_URL: 'https://txvawdwnfynohtgcveda.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_6Rn-9nQQCOfRubxIGGwhlQ_h4IuQY08',
-  // Correo de soporte / privacidad. TODO: reemplazar antes de publicar.
-  SUPPORT_EMAIL: 'soporte@cajadeahorro.app',
+  // Correo de soporte / privacidad.
+  SUPPORT_EMAIL: 'savingsclubapp+support@gmail.com',
 };

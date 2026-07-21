@@ -44,7 +44,7 @@ No hay backend nuevo: reusa el mismo RPC que el borrado dentro de la app.
 
 ## Antes de publicar (pendientes)
 
-- [ ] Reemplazar el correo de soporte `soporte@cajadeahorro.app` por el real
+- [ ] Reemplazar el correo de soporte `savingsclubapp+support@gmail.com` por el real
       (find/replace en los `.html` y en `config.js` → `SUPPORT_EMAIL`).
 - [ ] Cambiar los badges «Próximamente» de la landing por los links reales de las tiendas.
 - [ ] (Opcional) Agregar capturas de la app en `assets/` y en la landing.
