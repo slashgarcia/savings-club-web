@@ -20,7 +20,10 @@ para funcionar bajo el subpath de Pages (`/savings-club-web/`).
 
 ## Borrado de cuenta (cómo funciona)
 
-`eliminar-cuenta.html` usa [`@supabase/supabase-js`](https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2) (CDN):
+`eliminar-cuenta.html` usa `@supabase/supabase-js` **vendorizado localmente**
+(`assets/supabase-js-2.110.8.min.js`, versión fija — no CDN, no cadena de suministro
+externa en la página que maneja la sesión). La lógica vive en `assets/eliminar-cuenta.js`
+(script externo, sin JS inline, para poder aplicar `script-src 'self'`):
 
 1. **Correo** → `signInWithOtp({ email, options: { shouldCreateUser: false } })`.
 2. **Código OTP** (6 dígitos) → `verifyOtp({ email, token, type: 'email' })` → sesión.
@@ -33,6 +36,25 @@ No hay backend nuevo: reusa el mismo RPC que el borrado dentro de la app.
 
 > La **anon/publishable key** de `config.js` es pública por diseño; no es secreto. Las
 > políticas RLS de la base de datos son las que protegen los datos.
+
+## Seguridad (sitio estático)
+
+Al ser un sitio estático en un repo **público**, todo el código es visible por diseño:
+no hay secretos que ocultar. El endurecimiento aplicado va contra otras superficies:
+
+- **Sin CDN de terceros**: `supabase-js` está vendorizado con versión fija. Antes se
+  cargaba `@2` (tag flotante, sin SRI) desde jsdelivr en la misma página que tiene la
+  sesión autenticada y dispara el borrado → riesgo de cadena de suministro. Eliminado.
+- **CSP por `<meta http-equiv>`** en las 7 páginas (GitHub Pages no permite headers HTTP
+  propios). Páginas estáticas: `script-src 'none'`. Página de borrado: `script-src 'self'`
+  + `connect-src` acotado a la URL de Supabase. Base común: `default-src 'none'`,
+  `img-src 'self' data:`, `base-uri 'none'`, `form-action 'none'`.
+- **Sin JS inline**: la lógica de borrado se movió a `assets/eliminar-cuenta.js` para
+  poder usar `script-src 'self'` (una CSP con inline exigiría `'unsafe-inline'`).
+- **Pendiente (manual, en Settings → Pages)**: activar **Enforce HTTPS**.
+- **No aplicable vía `<meta>`**: `frame-ancestors` (anti-clickjacking) — no se puede
+  poner en meta CSP y Pages no manda `X-Frame-Options`. Se aceptó el riesgo: el borrado
+  ya está protegido por el OTP, así que un iframe no aporta nada al atacante.
 
 ## Publicar en GitHub Pages
 
